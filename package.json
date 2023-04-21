@@ -106,5 +106,9 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "moveable": "^0.46.1",
+    "ol": "^7.3.0"
   }
 }
