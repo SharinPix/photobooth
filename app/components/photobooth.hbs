@@ -1,8 +1,13 @@
 <input type='file' id='photo-id' {{on 'change' this.uploadPhoto}}/>
+<br/>
+<button>
+    <a href={{this.src}} target='_blank' download={{this.filename}} rel='noopener noreferrer'>Download</a>
+</button>
+<button {{on 'click' this.clearPhoto}}>Clear</button>
 
 <div class='photo-display'>
-    {{!-- translation to be added --}}
-    <img src={{this.src}} width='1000' height='1000' alt="data uploaded"/>
+    {{#if this.src}}
+        {{!-- translation to be added --}}
+        <img src={{this.src}} width='1000' height='1000' alt="data uploaded"/>
+    {{/if}}
 </div>
-
-<a href={{this.src}} target='_blank' download={{this.filename}} rel='noopener noreferrer'>Download</a>
