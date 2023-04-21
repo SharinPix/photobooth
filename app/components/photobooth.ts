@@ -15,6 +15,15 @@ export default class Photobooth extends Component {
       }
     }
 
+    @action downloadPhoto() {
+        var link=document.createElement('a');
+        link.href = this.src;
+        link.download = this.filename;
+        link.target = '_blank';
+        link.rel ='noopener noreferrer';
+        link.click();
+    }
+
     @action clearPhoto() {
         this.src = '';
         this.filename = '';
