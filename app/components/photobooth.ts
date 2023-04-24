@@ -7,11 +7,11 @@ export default class Photobooth extends Component {
     @tracked filename: string = '';
 
     @action uploadPhoto(event: Event) {
+      event.preventDefault();
       let uploader = document.getElementById('photo-id') as HTMLInputElement;
       if (uploader && uploader.files && uploader.files[0]) {
           this.src = URL.createObjectURL(uploader.files[0]);
           this.filename = uploader.files[0].name;
-          console.log(uploader.files[0]);
       }
     }
 
