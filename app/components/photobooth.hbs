@@ -5,5 +5,7 @@
 </button>
 <button type='button' {{on 'click' this.clearPhoto}}>Clear</button>
 {{#if this.photo}}
-  <ImageViewer @photo={{this.photo}} @photobooth={{this}}/>
+  <div local-class='wrapper' style={{this.style}}>
+    <ImageViewer @photo={{this.photo}}/>
+  </div>
 {{/if}}
