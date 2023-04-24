@@ -4,6 +4,6 @@
   Download
 </button>
 <button type='button' {{on 'click' this.clearPhoto}}>Clear</button>
-{{#if this.src}}
-  <ImageViewer @src={{this.src}} />
+{{#if this.photo}}
+  <ImageViewer @photo={{this.photo}} @photobooth={{this}}/>
 {{/if}}
