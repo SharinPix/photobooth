@@ -1,11 +1,12 @@
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 
-export default class ImageViewerComponent extends Component {
-    @tracked src!: string;
+interface ImageViewerArgs {
+    src: string;
+}
 
-    get test(): string {
-        console.log('mon vine ici, ' , this.args);
-        return this.src;
+export default class ImageViewerComponent extends Component<ImageViewerArgs> {
+
+    get src(): string {
+        return this.args.src;
     }
 }

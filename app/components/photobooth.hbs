@@ -1,8 +1,9 @@
 <input type='file' id='photo-id' {{on 'change' this.uploadPhoto}}/>
 <br/>
 <button type='button' {{on 'click' this.downloadPhoto}}>
-    {{!-- <a href={{this.src}} target='_blank' download={{this.filename}} rel='noopener noreferrer'>Download</a> --}}
-    Download
+  Download
 </button>
 <button type='button' {{on 'click' this.clearPhoto}}>Clear</button>
-<ImageViewer @src={{this.src}} />
+{{#if this.src}}
+  <ImageViewer @src={{this.src}} />
+{{/if}}
