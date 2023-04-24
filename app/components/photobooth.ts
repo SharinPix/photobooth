@@ -12,6 +12,7 @@ export default class Photobooth extends Component {
           this.src = URL.createObjectURL(uploader.files[0]);
           this.filename = uploader.files[0].name;
           console.log(uploader.files[0]);
+          console.log('parent src: ', this.src);
       }
     }
 

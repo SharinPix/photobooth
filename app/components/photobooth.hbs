@@ -5,10 +5,4 @@
     Download
 </button>
 <button type='button' {{on 'click' this.clearPhoto}}>Clear</button>
-
-<div class='photo-display'>
-    {{#if this.src}}
-        {{!-- translation to be added --}}
-        <img src={{this.src}} width='1000' height='1000' alt="data uploaded"/>
-    {{/if}}
-</div>
+<ImageViewer @src={{this.src}} />
