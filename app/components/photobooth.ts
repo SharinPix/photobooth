@@ -19,6 +19,17 @@ export default class Photobooth extends Component {
       }
     }
 
+    @action async addFiles(files: any) {
+      this.clearPhoto();
+      if (files[0]) {
+        this.photo = files[0];
+        let img = new Image();
+        img.src = URL.createObjectURL(this.photo);
+        await img.decode();
+        this.image = img;
+      }
+    }
+
     @action downloadPhoto() {
         if (this.photo && this.photo.src && this.photo.filename) {
             var link=document.createElement('a');

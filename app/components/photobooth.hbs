@@ -1,12 +1,17 @@
-<div class='dropzone'>
-  <input type='file' id='photo-id' {{on 'change' this.uploadPhoto}}/>
-</div>
+
 {{#if this.image}}
-  <button type='button' class='btn btn-primary' {{on 'click' this.downloadPhoto}}>
+  <button type='button' class='btn btn-primary btn-download' {{on 'click' this.downloadPhoto}}>
     {{svg-jar 'download' class='icon' width='24px' height='24px'}}
   </button>
-  <button type='button' class='btn btn-danger' {{on 'click' this.clearPhoto}}>
-    {{svg-jar 'trash' class='icon' width='24px' height='24px'}}
+  <button type='button' class='btn btn-secondary btn-refresh' {{on 'click' this.clearPhoto}}>
+    {{svg-jar 'reset' class='icon' width='24px' height='24px'}}
   </button>
   <ImageViewer @image={{this.image}} class='container'/>
+{{else}}
+  <FileDropZone @onDrop={{this.addFiles}} as |state|>
+    {{#unless state.dragging }}
+      <p class='photo-id'>drop your files here...</p>
+    {{/unless}}
+  </FileDropZone>
 {{/if}}
+
