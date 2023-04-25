@@ -34,9 +34,10 @@
 }
 
 .photo-id {
-    position: absolute;
-    top: 50%;
-    left: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ember-file-drop-zone {
