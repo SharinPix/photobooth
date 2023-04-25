@@ -1,4 +1,7 @@
-<div class='photo-display'>
-  {{!-- translation to be added --}}
-  <img src={{this.src}} width='1000' height='1000' alt="data uploaded"/>
+<div
+  {{did-insert (perform this.initTask)}}
+  ...attributes
+>
+  <div class='map' local-class='map'></div>
+  <img class='overlay' src={{this.overlayService.url}} alt='photo-preview'/>
 </div>
