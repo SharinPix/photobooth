@@ -1,11 +1,10 @@
 <input type='file' id='photo-id' {{on 'change' this.uploadPhoto}}/>
-<br/>
-<button type='button' class='btn btn-primary' {{on 'click' this.downloadPhoto}}>
-  {{svg-jar 'download' class='icon' width='24px' height='24px'}}
-</button>
-<button type='button' class='btn btn-danger' {{on 'click' this.clearPhoto}}>
-  {{svg-jar 'trash' class='icon' width='24px' height='24px'}}
-</button>
 {{#if this.image}}
+  <button type='button' class='btn btn-primary' {{on 'click' this.downloadPhoto}}>
+    {{svg-jar 'download' class='icon' width='24px' height='24px'}}
+  </button>
+  <button type='button' class='btn btn-danger' {{on 'click' this.clearPhoto}}>
+    {{svg-jar 'trash' class='icon' width='24px' height='24px'}}
+  </button>
   <ImageViewer @image={{this.image}} class='container'/>
 {{/if}}
