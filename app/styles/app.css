@@ -16,3 +16,17 @@
   right: 0;
   width: 100%;
 }
+
+.dropzone {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#photo-id {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+}
