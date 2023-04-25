@@ -1,1 +1,18 @@
-/* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+.container {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.map {
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}

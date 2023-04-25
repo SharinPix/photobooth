@@ -108,6 +108,8 @@
     "edition": "octane"
   },
   "dependencies": {
+    "@ember/render-modifiers": "^2.0.5",
+    "lodash": "^4.17.21",
     "moveable": "^0.46.1",
     "ol": "^7.3.0"
   }
