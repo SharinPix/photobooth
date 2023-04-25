@@ -1,21 +1,20 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { SafeString } from 'handlebars';
-import { resizeToFit } from 'photobooth/lib/resize-to-fit';
-import { htmlSafe } from '@ember/template';
 
 export default class Photobooth extends Component {
     @tracked photo: any | undefined;
-    // @tracked filename: string = '';
+    @tracked image: any | undefined;
 
-    @action uploadPhoto(event: Event) {
+    @action async uploadPhoto(event: Event) {
       event.preventDefault();
       let uploader = document.getElementById('photo-id') as HTMLInputElement;
       if (uploader && uploader.files && uploader.files[0]) {
-        //   this.src = URL.createObjectURL(uploader.files[0]);
-        //   this.filename = uploader.files[0].name;
         this.photo = uploader.files[0];
+        let img = new Image();
+        img.src = URL.createObjectURL(this.photo);
+        await img.decode();
+        this.image = img;
       }
     }
 
@@ -32,6 +31,6 @@ export default class Photobooth extends Component {
 
     @action clearPhoto() {
         this.photo = undefined;
-        // this.filename = '';
+        this.image = undefined;
     }
 }

@@ -12,7 +12,7 @@ import { service } from '@ember/service';
 import OverlayService from 'photobooth/services/overlay';
 
 interface ImageViewerArgs {
-    photo: any
+    image: any
 }
 
 export default class ImageViewerComponent extends Component<ImageViewerArgs> {
@@ -23,15 +23,15 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
     map: Map | null = null;
     elem: HTMLElement | null = null;
 
-    get photo(): any {
-        return this.args.photo;
+    get image(): any {
+        return this.args.image;
     }
 
     initTask = task({ enqueue: true }, async (e: HTMLElement): Promise<void> => {
         console.log('Element: ', e);
         this.elem = e;
 
-        const extent = [0, 0, 1024, 683]; // 0, 0, image.width, image.height
+        const extent = [0, 0, this.image.width, this.image.height];
 
         const projection = new Projection({
           code: 'sample_id',
@@ -49,8 +49,8 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         });
 
         const imageStatic = new Source.ImageStatic({
-          url: 'https://media.istockphoto.com/id/1368424494/photo/studio-portrait-of-a-cheerful-woman.jpg?s=1024x1024&w=is&k=20&c=9eszAhNKMRzMHVp4wlmFRak8YyH3rAU8re9HjKA6h3A=',
-          // url: URL.createObjectURL(this.photo),
+          // url: 'https://media.istockphoto.com/id/1368424494/photo/studio-portrait-of-a-cheerful-woman.jpg?s=1024x1024&w=is&k=20&c=9eszAhNKMRzMHVp4wlmFRak8YyH3rAU8re9HjKA6h3A=',
+          url: this.image.src,
           projection,
           imageExtent: extent,
           crossOrigin: 'Anonymous',
