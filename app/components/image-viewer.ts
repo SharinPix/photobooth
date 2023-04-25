@@ -48,7 +48,6 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         });
 
         const imageStatic = new Source.ImageStatic({
-          // url: 'https://media.istockphoto.com/id/1368424494/photo/studio-portrait-of-a-cheerful-woman.jpg?s=1024x1024&w=is&k=20&c=9eszAhNKMRzMHVp4wlmFRak8YyH3rAU8re9HjKA6h3A=',
           url: this.image.src,
           projection,
           imageExtent: extent,
