@@ -14,13 +14,11 @@
   height: 100%;
 }
 
-/* .btn-refresh {
+.btn-refresh {
   position: absolute;
-  top: 20px;
-  right: 24px;
+  right: 10px;
   z-index: 100;
 }
-*/
 
 .btn-download {
   margin-top: 10px;
