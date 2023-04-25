@@ -28,7 +28,6 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
     }
 
     initTask = task({ enqueue: true }, async (e: HTMLElement): Promise<void> => {
-        console.log('Element: ', e);
         this.elem = e;
 
         const extent = [0, 0, this.image.width, this.image.height];
