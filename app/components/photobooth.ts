@@ -8,6 +8,7 @@ export default class Photobooth extends Component {
 
     @action async uploadPhoto(event: Event) {
       event.preventDefault();
+      this.clearPhoto();
       let uploader = document.getElementById('photo-id') as HTMLInputElement;
       if (uploader && uploader.files && uploader.files[0]) {
         this.photo = uploader.files[0];
