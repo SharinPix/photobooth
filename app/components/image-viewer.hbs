@@ -1,7 +1,7 @@
 <div
   {{did-insert (perform this.initTask)}}
-  local-class='container'
   ...attributes
 >
   <div class='map' local-class='map'></div>
+  <img class='overlay' src={{this.overlayService.url}} alt=''/>
 </div>

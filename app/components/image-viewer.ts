@@ -8,6 +8,8 @@ import { Projection } from 'ol/proj';
 import Interaction from 'ol/interaction';
 import Source from 'ol/source';
 import Extent from 'ol/extent';
+import { service } from '@ember/service';
+import OverlayService from 'photobooth/services/overlay';
 
 interface ImageViewerArgs {
     photo: any
@@ -16,6 +18,7 @@ interface ImageViewerArgs {
 export default class ImageViewerComponent extends Component<ImageViewerArgs> {
     @tracked width: number | undefined;
     @tracked height: number | undefined;
+    @service('overlay') overlayService!: OverlayService;
 
     map: Map | null = null;
     elem: HTMLElement | null = null;
@@ -28,19 +31,7 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         console.log('Element: ', e);
         this.elem = e;
 
-        // const p = Promise.all([
-        //   import('ol/Map'),
-        //   import('ol/View'),
-        //   import('ol/layer'),
-        //   import('ol/proj/Projection'),
-        //   import('ol/interaction'),
-        //   import('ol/source'),
-        //   import('ol/extent'),
-        // ]);
-
-        // const [Map, View, Layer, Projection, Interaction, Source, Extent]: Resolved<typeof p> = await p;
-
-        const extent = [0, 0, 500, 1000];
+        const extent = [0, 0, 1024, 683]; // 0, 0, image.width, image.height
 
         const projection = new Projection({
           code: 'sample_id',
@@ -58,7 +49,8 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         });
 
         const imageStatic = new Source.ImageStatic({
-          url: 'https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960',
+          url: 'https://media.istockphoto.com/id/1368424494/photo/studio-portrait-of-a-cheerful-woman.jpg?s=1024x1024&w=is&k=20&c=9eszAhNKMRzMHVp4wlmFRak8YyH3rAU8re9HjKA6h3A=',
+          // url: URL.createObjectURL(this.photo),
           projection,
           imageExtent: extent,
           crossOrigin: 'Anonymous',
