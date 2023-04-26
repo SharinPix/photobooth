@@ -10,7 +10,22 @@
 {{else}}
   <FileDropZone @onDrop={{this.addFiles}} as |state|>
     {{#unless state.dragging }}
-      <p class='photo-id'>drop your files here...</p>
+      <div class='photo-id'>
+        <div class='col'>
+          <div class='row'>
+            <p>Drop your files here...</p>
+          </div>
+          <div class='row'>
+            <button class='btn btn-primary'>
+              <label class="label">
+                <input type='file' id='photo' accept='image/*' capture='capture' {{on 'change' this.uploadPhoto}}/>
+                {{svg-jar 'upload' class='icon' width='24px' width='24px'}}
+                <span>Select a photo</span>
+              </label>
+             </button>
+          </div>
+        </div>
+      </div>
     {{/unless}}
   </FileDropZone>
 {{/if}}

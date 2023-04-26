@@ -50,3 +50,18 @@
   bottom: 0;
 }
 
+.row {
+  text-align: center;
+}
+
+label.label input[type="file"] {
+  position: absolute;
+  top: -1000px;
+}
+
+.label {
+  cursor: pointer;
+  padding: 5px 15px;
+  background: transparent;
+  display: inline-block;
+}
