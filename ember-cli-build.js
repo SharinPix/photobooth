@@ -8,6 +8,15 @@ module.exports = function (defaults) {
       bootstrapVersion: 5,
       importBootstrapCSS: true,
     },
+    svgJar: {
+      strategy: 'inline',
+      inline: {
+        copypastaGen: (assetId) => `{{svg-jar "${assetId}" class="icon"}}`,
+        throwOnFailure: true,
+        stripPath: false,
+        sourceDirs: ['app/svg'],
+      },
+    },
   });
 
   return app.toTree();

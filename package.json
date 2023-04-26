@@ -78,6 +78,7 @@
     "ember-concurrency": "^3.0.0",
     "ember-data": "~4.11.3",
     "ember-fetch": "^8.1.2",
+    "ember-file-drop-zone": "^1.0.0",
     "ember-load-initializers": "^2.1.2",
     "ember-modifier": "^4.1.0",
     "ember-page-title": "^7.0.0",
@@ -111,6 +112,7 @@
   },
   "dependencies": {
     "@ember/render-modifiers": "^2.0.5",
+    "ember-svg-jar": "^2.4.2",
     "lodash": "^4.17.21",
     "moveable": "^0.46.1",
     "ol": "^7.3.0"

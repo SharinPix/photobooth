@@ -8,9 +8,21 @@ export default class Photobooth extends Component {
 
     @action async uploadPhoto(event: Event) {
       event.preventDefault();
-      let uploader = document.getElementById('photo-id') as HTMLInputElement;
+      this.clearPhoto();
+      let uploader = document.getElementById('photo') as HTMLInputElement;
       if (uploader && uploader.files && uploader.files[0]) {
         this.photo = uploader.files[0];
+        let img = new Image();
+        img.src = URL.createObjectURL(this.photo);
+        await img.decode();
+        this.image = img;
+      }
+    }
+
+    @action async addFiles(files: any) {
+      this.clearPhoto();
+      if (files[0]) {
+        this.photo = files[0];
         let img = new Image();
         img.src = URL.createObjectURL(this.photo);
         await img.decode();
