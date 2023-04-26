@@ -15,11 +15,11 @@
           <div class='row'>
             <p>Drop your files here...</p>
           </div>
-          <div class='row'>
-            <button type='button' class='btn btn-primary'>
+          <div class='row btn-container'>
+            <button class='btn btn-primary btn-upload'>
               <label class="label">
-                <input type='file' id='photo' accept='image/*' {{on 'change' this.uploadPhoto}}/>
-                {{svg-jar 'upload' class='icon' width='24px' height='24px'}}
+                <input type='file' id='photo' accept='image/*' capture='capture' {{on 'change' this.uploadPhoto}}/>
+                {{svg-jar 'upload' class='icon' width='24px'}}
                 <span>Select a photo</span>
               </label>
              </button>
