@@ -89,7 +89,7 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
       ): Promise<{ x: number; y: number; dataUrl: string }> => {
         if (!this.map) throw new Error('Map was not loaded yet.');
         const mapCanvas = document.createElement('canvas');
-        if (this.width) mapCanvas.width = (this.width * scale) as number;
+        if (this.width) mapCanvas.width = (this.width * (scale - 0.1)) as number;
         if (this.height) mapCanvas.height = (this.height * scale) as number;
         const mapContext = mapCanvas.getContext('2d');
         const canvas = this.mapCanvas;
@@ -134,6 +134,9 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         if (!this.elem) {
           throw new Error('Could not export');
         }
+        console.log('MATRIX: ', canvas);
+        console.log('X: ', (this.elem.offsetLeft + this.elem.clientLeft) * scale )
+        console.log('X: ', (this.elem.offsetTop + this.elem.clientTop) * scale )
         return {
           x: (this.elem.offsetLeft + this.elem.clientLeft) * scale,
           y: (this.elem.offsetTop + this.elem.clientTop) * scale,
