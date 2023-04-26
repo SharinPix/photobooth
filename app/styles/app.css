@@ -62,7 +62,10 @@
 
 label.label input[type="file"] {
   position: absolute;
-  top: -1000px;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .label {
@@ -80,4 +83,8 @@ label.label input[type="file"] {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 25%;
+}
+
+input {
+  opacity: 0;
 }
