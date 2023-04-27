@@ -3,7 +3,9 @@
   width: 100%;
   aspect-ratio: 1;
   position: relative;
-  max-height: 80vh;
+  /* max-height: 80vh; */
+  width: 500px;
+  height: 500px;
   margin-top: 20px;
 }
 
@@ -61,6 +63,7 @@ label.label input[type="file"] {
   right: 0;
   left: 0;
   bottom: 0;
+  opacity: 0;
 }
 
 .label {
@@ -68,8 +71,4 @@ label.label input[type="file"] {
   padding: 5px 15px;
   background: transparent;
   display: inline-block;
-}
-
-input {
-  opacity: 0;
 }
