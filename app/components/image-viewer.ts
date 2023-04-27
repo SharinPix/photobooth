@@ -11,10 +11,12 @@ import Extent from 'ol/extent';
 import { service } from '@ember/service';
 import OverlayService from 'photobooth/services/overlay';
 import Photobooth from './photobooth';
+import { saveAs } from 'file-saver';
 
 interface ImageViewerArgs {
     image: any,
-    photobooth: Photobooth
+    photobooth: Photobooth,
+    filename: string,
 }
 
 export default class ImageViewerComponent extends Component<ImageViewerArgs> {
@@ -28,6 +30,10 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
 
     get image(): any {
         return this.args.image;
+    }
+
+    get filename(): string {
+      return this.args.filename;
     }
 
     get mapCanvas(): HTMLCanvasElement | null {
@@ -84,13 +90,11 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
     });
 
     exportTask = task(
-      async (
-        scale: number
-      ): Promise<{ x: number; y: number; dataUrl: string }> => {
+      async (): Promise<void> => {
         if (!this.map) throw new Error('Map was not loaded yet.');
         const mapCanvas = document.createElement('canvas');
-        if (this.width) mapCanvas.width = (this.width * scale) as number;
-        if (this.height) mapCanvas.height = (this.height * scale) as number;
+        if (this.width) mapCanvas.width = (this.width) as number;
+        if (this.height) mapCanvas.height = (this.height) as number;
         const mapContext = mapCanvas.getContext('2d');
         const canvas = this.mapCanvas;
 
@@ -127,26 +131,22 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         }
 
         if (!matrix) throw new Error('Could not export (matrix)');
-        const transformMatrix = new DOMMatrix(matrix.map((i) => i * scale));
+        const transformMatrix = new DOMMatrix(matrix.map((i) => i));
         mapContext?.setTransform(transformMatrix);
-        mapContext?.drawImage(canvas, 0, 0);
+        mapContext?.drawImage(canvas, 0, 0, 500, 500);
 
-        if (!this.elem) {
-          throw new Error('Could not export');
-        }
+        const img = new window.Image();
+        await new Promise<void>((resolve) => {
+          img.setAttribute('src', this.overlayService.url);
 
-        let overlay = document.querySelector('.overlay') as HTMLElement;
-        let img = new Image();
-        img.src = overlay.getAttribute('src') || '';
-        img.width = this.elem.clientWidth
-        img.height = this.elem.clientHeight;
-        mapContext?.drawImage(img, 0, 0, img.width, img.height);
+          img.addEventListener('load', () => {
+            mapContext?.drawImage(img, 0, 0, 500, 500);
+            resolve();
+          });
+        });
 
-        return {
-          x: (this.elem.offsetLeft + this.elem.clientLeft) * scale,
-          y: (this.elem.offsetTop + this.elem.clientTop) * scale,
-          dataUrl: mapCanvas.toDataURL(),
-        };
+        let dataUrl = mapCanvas.toDataURL();
+        saveAs(dataUrl, this.filename);
       }
     );
 }

@@ -3,7 +3,7 @@
   <button type='button' class='btn btn-secondary btn-refresh' {{on 'click' this.clearPhoto}}>
     {{svg-jar 'reset' class='icon' width='24px' height='24px'}}
   </button>
-  <ImageViewer @image={{this.image}} @photobooth={{this}} class='container'/>
+  <ImageViewer @image={{this.image}} @photobooth={{this}} @filename={{this.photo.name}} class='container'/>
   <button type='button' class='btn btn-primary btn-download' {{on 'click' (perform this.saveTask)}}>
     {{svg-jar 'download' class='icon' width='24px' height='24px'}} Download
   </button>

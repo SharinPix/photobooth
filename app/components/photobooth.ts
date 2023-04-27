@@ -11,34 +11,7 @@ export default class Photobooth extends Component {
     imageViewer: any;
 
     saveTask = task({ enqueue: true }, async () => {
-      const rect = (
-        document.querySelector('.container') as Element
-      );
-      let elem = rect.getBoundingClientRect();
-      const scale = 1920 / elem.width;
-      const result = await this.imageViewer.exportTask.perform(scale);
-
-
-      const canvas = document.createElement('canvas');
-      canvas.width = 1920;
-      canvas.height = 1920 * (2 / 3);
-
-      const context = canvas.getContext('2d');
-      if (context) {
-        context.fillStyle = 'white';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-      }
-
-      const img = new window.Image();
-      await new Promise<void>((resolve) => {
-        img.setAttribute('src', result.dataUrl);
-
-        img.addEventListener('load', () => {
-          context?.drawImage(img, result.x, result.y);
-          resolve();
-        });
-      });
-      this.downloadPhoto(img);
+      await this.imageViewer.exportTask.perform();
     });
 
 
@@ -68,15 +41,6 @@ export default class Photobooth extends Component {
         await img.decode();
         this.image = img;
       }
-    }
-
-    @action downloadPhoto(img: any) {
-      var link=document.createElement('a');
-      link.href = img.src;
-      link.download = this.photo.name;
-      link.target = '_blank';
-      link.rel ='noopener noreferrer';
-      link.click();
     }
 
     @action clearPhoto() {
