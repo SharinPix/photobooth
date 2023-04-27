@@ -55,11 +55,6 @@
   text-align: center;
 }
 
-.btn-container {
-  height: 100px;
-  position: relative;
-}
-
 label.label input[type="file"] {
   position: absolute;
   top: 0;
@@ -73,18 +68,4 @@ label.label input[type="file"] {
   padding: 5px 15px;
   background: transparent;
   display: inline-block;
-}
-
-.btn-upload {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 25%;
-}
-
-input {
-  opacity: 0;
 }
