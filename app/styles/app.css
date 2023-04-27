@@ -69,3 +69,7 @@ label.label input[type="file"] {
   background: transparent;
   display: inline-block;
 }
+
+input {
+  opacity: 0;
+}
