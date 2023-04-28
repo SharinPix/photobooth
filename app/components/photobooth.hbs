@@ -1,27 +1,36 @@
 
-{{#if this.image}}
-  <button type='button' class='btn btn-secondary btn-refresh' {{on 'click' this.clearPhoto}}>
-    {{svg-jar 'reset' class='icon' width='24px' height='24px'}}
-  </button>
-  <ImageViewer @image={{this.image}} @photobooth={{this}} @filename={{this.photo.name}} class='container'/>
-  <button type='button' class='btn btn-primary btn-download' {{on 'click' (perform this.saveTask)}}>
-    {{svg-jar 'download' class='icon' width='24px' height='24px'}} Download
-  </button>
-{{else}}
-  <FileDropZone @onDrop={{this.addFiles}} as |state|>
-    {{#unless state.dragging }}
-      <div class='photo-id'>
-        <div class='row d-grid gap-2 d-md-block'>
-          <h3>Drop your files here...</h3>
-          <button class='btn btn-primary'  type='button'>
-            <label class="label">
-              <input type='file' id='photo' accept='image/*' {{on 'change' this.uploadPhoto}}/>
-              {{svg-jar 'upload' class='icon' width='24px'}}
-              <span>Select a photo</span>
-            </label>
-          </button>
+<div class="photobooth-container">
+  {{#if this.image}}
+    <button type='button' class='btn btn-secondary btn-refresh' {{on 'click' this.clearPhoto}}>
+      {{svg-jar 'reset' class='icon' width='24px' height='24px'}}
+    </button>
+    <ImageViewer @image={{this.image}} @photobooth={{this}} @filename={{this.photo.name}} class='container'/>
+    <button type='button' class='btn btn-primary btn-download' {{on 'click' (perform this.saveTask)}}>
+      {{svg-jar 'download' class='icon' width='24px' height='24px'}} Download
+    </button>
+  {{else}}
+    <FileDropZone @onDrop={{this.addFiles}} as |state|>
+      {{#unless state.dragging }}
+        <div class='photo-id'>
+          <div class='row d-grid gap-2 d-md-block'>
+            <h3>Drop your files here...</h3>
+            <button class='btn btn-primary'  type='button'>
+              <label class="label">
+                <input type='file' id='photo' accept='image/*' {{on 'change' this.uploadPhoto}}/>
+                {{svg-jar 'upload' class='icon' width='24px'}}
+                <span>Select a photo</span>
+              </label>
+            </button>
+          </div>
         </div>
+      {{/unless}}
+    </FileDropZone>
+  {{/if}}
+  <footer class="text-center text-lg-start text-dark footer">
+      <div class="text-center p-3">
+        <a class="text-white" href="https://www.sharinpix.com">
+          Powered by SharinPix
+        </a>
       </div>
-    {{/unless}}
-  </FileDropZone>
-{{/if}}
+  </footer>
+</div>
