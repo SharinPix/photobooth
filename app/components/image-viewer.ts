@@ -131,6 +131,7 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         }
 
         if (!matrix) throw new Error('Could not export (matrix)');
+        const mapElem = this.elem?.querySelector('.map');
         const transformMatrix = new DOMMatrix(matrix.map((i) => i));
         mapContext?.setTransform(transformMatrix);
         mapContext?.drawImage(canvas, 0, 0); // to change
