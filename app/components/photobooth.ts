@@ -1,10 +1,23 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { task } from 'ember-concurrency';
+import ImageViewerComponent from './image-viewer';
 
 export default class Photobooth extends Component {
     @tracked photo: any | undefined;
     @tracked image: any | undefined;
+
+    imageViewer: any;
+
+    saveTask = task({ enqueue: true }, async () => {
+      await this.imageViewer.exportTask.perform();
+    });
+
+
+    registerChild(component: ImageViewerComponent) {
+      this.imageViewer = component;
+    }
 
     @action async uploadPhoto(event: Event) {
       event.preventDefault();
@@ -28,17 +41,6 @@ export default class Photobooth extends Component {
         await img.decode();
         this.image = img;
       }
-    }
-
-    @action downloadPhoto() {
-        if (this.photo && this.photo.src && this.photo.filename) {
-            var link=document.createElement('a');
-            link.href = this.photo.src;
-            link.download = this.photo.filename;
-            link.target = '_blank';
-            link.rel ='noopener noreferrer';
-            link.click();
-        }
     }
 
     @action clearPhoto() {
