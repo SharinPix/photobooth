@@ -131,16 +131,17 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         }
 
         if (!matrix) throw new Error('Could not export (matrix)');
+        const mapElem = this.elem?.querySelector('.map');
         const transformMatrix = new DOMMatrix(matrix.map((i) => i));
         mapContext?.setTransform(transformMatrix);
-        mapContext?.drawImage(canvas, 0, 0, 500, 500);
+        mapContext?.drawImage(canvas, 0, 0); // to change
 
         const img = new window.Image();
         await new Promise<void>((resolve) => {
           img.setAttribute('src', this.overlayService.url);
 
           img.addEventListener('load', () => {
-            mapContext?.drawImage(img, 0, 0, 500, 500);
+            mapContext?.drawImage(img, 0, 0, canvas.width, canvas.height);
             resolve();
           });
         });

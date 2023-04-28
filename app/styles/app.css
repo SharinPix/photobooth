@@ -9,6 +9,11 @@
   margin-top: 20px;
 }
 
+.supercontainer.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .icon {
   fill: white;
 }
