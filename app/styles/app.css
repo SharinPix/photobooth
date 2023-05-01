@@ -1,8 +1,5 @@
-/* .test {
-  aspect-ratio: 1;
-}
-
-.photobooth-container {
+/* stylelint-disable */
+/*.photobooth-container {
   height: 100%;
 }
 
@@ -27,7 +24,6 @@
   justify-content: center;
   align-items: center;
 } */
-
 
 .flex-container {
   margin-top: 20px;
@@ -92,4 +88,3 @@ label.label input[type="file"] {
 .map {
   height: 100%;
 }
-

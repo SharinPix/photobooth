@@ -46,6 +46,7 @@
 </div> --}}
 
 {{!-- <div class="photobooth-container d-flex align-items-center justify-content-center"> --}}
+
 {{#if this.image}}
   <div class="flex-container container-fluid col-12 col-md-9 col-lg-8">
     <div class="card mx-auto">
@@ -60,8 +61,8 @@
           <button type='button' class='btn btn-primary btn-download mx-2' {{on 'click' (perform this.saveTask)}}>
             Download
           </button>
-          <button type='button' class='btn btn-primary btn-download mx-2' {{on 'click' (perform this.saveTask)}}>
-            Refresh
+          <button type='button' class='btn btn-secondary btn-refresh' {{on 'click' this.clearPhoto}}>
+            Refresh {{svg-jar 'reset' class='icon' width='24px' height='24px'}}
           </button>
         </div>
       </div>
@@ -71,20 +72,20 @@
     </div>
   </div>
 {{else}}
-    <FileDropZone @onDrop={{this.addFiles}} as |state|>
-      {{#unless state.dragging }}
-        <div class='photo-id'>
-          <div class='row d-grid gap-2 d-md-block'>
-            <h3>Drop your files here...</h3>
-            <button class='btn btn-primary'  type='button'>
-              <label class="label">
-                <input type='file' id='photo' accept='image/*' {{on 'change' this.uploadPhoto}}/>
-                {{svg-jar 'upload' class='icon' width='24px'}}
-                <span>Select a photo</span>
-              </label>
-            </button>
-          </div>
+  <FileDropZone @onDrop={{this.addFiles}} as |state|>
+    {{#unless state.dragging }}
+      <div class='photo-id'>
+        <div class='row d-grid gap-2 d-md-block'>
+          <h3>Drop your files here...</h3>
+          <button class='btn btn-primary'  type='button'>
+            <label class="label">
+              <input type='file' id='photo' accept='image/*' {{on 'change' this.uploadPhoto}}/>
+              {{svg-jar 'upload' class='icon' width='24px'}}
+              <span>Select a photo</span>
+            </label>
+          </button>
         </div>
-      {{/unless}}
-    </FileDropZone>
-  {{/if}}
+      </div>
+    {{/unless}}
+  </FileDropZone>
+{{/if}}
