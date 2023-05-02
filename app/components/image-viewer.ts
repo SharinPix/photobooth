@@ -93,8 +93,8 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
       async (): Promise<void> => {
         if (!this.map) throw new Error('Map was not loaded yet.');
         const mapCanvas = document.createElement('canvas');
-        mapCanvas.width = 500 as number;
-        mapCanvas.height = 500 as number;
+        if (this.width) mapCanvas.width = (this.width) as number;
+        if (this.height) mapCanvas.height = (this.height) as number;
         const mapContext = mapCanvas.getContext('2d');
         const canvas = this.mapCanvas;
 
@@ -134,14 +134,14 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         const mapElem = this.elem?.querySelector('.map');
         const transformMatrix = new DOMMatrix(matrix.map((i) => i));
         mapContext?.setTransform(transformMatrix);
-        mapContext?.drawImage(canvas, 0, 0, 500, 500); // to change
+        mapContext?.drawImage(canvas, 0, 0); // to change
 
         const img = new window.Image();
         await new Promise<void>((resolve) => {
           img.setAttribute('src', this.overlayService.url);
 
           img.addEventListener('load', () => {
-            mapContext?.drawImage(img, 0, 0, 500, 500);
+            mapContext?.drawImage(img, 0, 0, canvas.width, canvas.height);
             resolve();
           });
         });
