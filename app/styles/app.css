@@ -1,36 +1,17 @@
 /* stylelint-disable */
+.flex-container {
+  margin-top: 20px;
+}
+
 .container {
-  width: 100%;
   aspect-ratio: 1;
   position: relative;
-  /* max-height: 80vh; */
-  width: 500px;
-  height: 500px;
-  margin-top: 20px;
+
 }
 
 .supercontainer.container {
   padding-left: 0;
   padding-right: 0;
-}
-
-.icon {
-  fill: white;
-}
-
-.map {
-  height: 100%;
-}
-
-.btn-refresh {
-  position: absolute;
-  right: 10px;
-  z-index: 100;
-}
-
-.btn-download {
-  margin-top: 10px;
-  width: 100%;
 }
 
 .overlay {
@@ -58,10 +39,6 @@
   bottom: 0;
 }
 
-.row {
-  text-align: center;
-}
-
 label.label input[type="file"] {
   position: absolute;
   top: 0;
@@ -76,4 +53,20 @@ label.label input[type="file"] {
   padding: 5px 15px;
   background: transparent;
   display: inline-block;
+}
+
+.icon {
+  fill: white;
+}
+
+.map {
+  height: 100%;
+}
+
+.header-logo {
+  width: 40%;
+}
+
+.footer-logo {
+  width: 5%;
 }
