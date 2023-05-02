@@ -2,7 +2,7 @@
   <div class="flex-container container-fluid col-12 col-md-9 col-lg-8">
     <div class="card mx-auto">
       <div class="card-header text-center">
-        <img class='header-logo' src='assets/images/header.png'/>
+        <img class='header-logo' src='assets/images/header.png' alt='sharinpix'/>
       </div>
       <div class="card-body">
         <ImageViewer @image={{this.image}} @photobooth={{this}} @filename={{this.photo.name}} class='container supercontainer'/>
@@ -10,16 +10,16 @@
       <div class="card-body mt-auto">
         <div class="d-flex justify-content-center align-items-center">
           <button type='button' class='btn btn-primary btn-download mx-2' {{on 'click' (perform this.saveTask)}}>
-            {{svg-jar 'download' class='icon' width='24px' height='24px'}} &nbsp; Download
+            {{svg-jar 'download' class='icon' width='24px' height='24px'}} Download
           </button>
           <button type='button' class='btn btn-secondary btn-refresh' {{on 'click' this.clearPhoto}}>
-            {{svg-jar 'reset' class='icon' width='24px' height='24px'}} &nbsp; Refresh
+            {{svg-jar 'reset' class='icon' width='24px' height='24px'}} Refresh
           </button>
         </div>
       </div>
       <div class="card-footer bg-blue text-center">
         <a href="https://www.sharinpix.com" target="_blank" rel="noopener noreferrer">Powered by SharinPix</a>
-        <img class='footer-logo' src='/assets/images/footer.png'/>
+        <img class='footer-logo' src='/assets/images/footer.png' alt='sharinpix'/>
       </div>
     </div>
   </div>
