@@ -1,57 +1,8 @@
-{{!--
-<div class="photobooth-container d-flex align-items-center justify-content-center">
-  {{#if this.image}}
-  <div class="card w-75">
-    <ImageViewer @image={{this.image}} @photobooth={{this}} @filename={{this.photo.name}} class='container'/>
-    <div class="card-title text-center">SharinPix Photobooth</div>
-    <div class="card-body">
-      <div class="align-items-center justify-content-center">
-        <div style="background-color: blue;" class="test"></div>
-      </div>
-    </div>
-    <div class="card-body text-center">
-      <button type='button' class='btn btn-primary btn-download' {{on 'click' (perform this.saveTask)}}>
-          Download
-      </button>
-      <button type='button' class='btn btn-primary btn-download' {{on 'click' (perform this.saveTask)}}>
-          Refresh
-      </button>
-    </div>
-  </div>
-  {{else}}
-    <FileDropZone @onDrop={{this.addFiles}} as |state|>
-      {{#unless state.dragging }}
-        <div class='photo-id'>
-          <div class='row d-grid gap-2 d-md-block'>
-            <h3>Drop your files here...</h3>
-            <button class='btn btn-primary'  type='button'>
-              <label class="label">
-                <input type='file' id='photo' accept='image/*' {{on 'change' this.uploadPhoto}}/>
-                {{svg-jar 'upload' class='icon' width='24px'}}
-                <span>Select a photo</span>
-              </label>
-            </button>
-          </div>
-        </div>
-      {{/unless}}
-    </FileDropZone>
-  {{/if}}
-  <footer class="text-center text-lg-start text-dark footer">
-      <div class="text-center p-3">
-        <a class="text-white" href="https://www.sharinpix.com">
-          Powered by SharinPix
-        </a>
-      </div>
-  </footer>
-</div> --}}
-
-{{!-- <div class="photobooth-container d-flex align-items-center justify-content-center"> --}}
-
 {{#if this.image}}
   <div class="flex-container container-fluid col-12 col-md-9 col-lg-8">
     <div class="card mx-auto">
       <div class="card-header text-center">
-        <h4 class="card-title">SharinPix Photobooth</h4>
+        <img class='header-logo' src='assets/images/header.png'/>
       </div>
       <div class="card-body">
         <ImageViewer @image={{this.image}} @photobooth={{this}} @filename={{this.photo.name}} class='container supercontainer'/>
@@ -59,15 +10,16 @@
       <div class="card-body mt-auto">
         <div class="d-flex justify-content-center align-items-center">
           <button type='button' class='btn btn-primary btn-download mx-2' {{on 'click' (perform this.saveTask)}}>
-            Download
+            {{svg-jar 'download' class='icon' width='24px' height='24px'}} &nbsp; Download
           </button>
           <button type='button' class='btn btn-secondary btn-refresh' {{on 'click' this.clearPhoto}}>
-            Refresh {{svg-jar 'reset' class='icon' width='24px' height='24px'}}
+            {{svg-jar 'reset' class='icon' width='24px' height='24px'}} &nbsp; Refresh
           </button>
         </div>
       </div>
       <div class="card-footer bg-blue text-center">
         <a href="https://www.sharinpix.com" target="_blank" rel="noopener noreferrer">Powered by SharinPix</a>
+        <img class='footer-logo' src='/assets/images/footer.png'/>
       </div>
     </div>
   </div>
