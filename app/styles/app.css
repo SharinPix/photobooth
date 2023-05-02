@@ -1,30 +1,4 @@
 /* stylelint-disable */
-/*.photobooth-container {
-  height: 100%;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #0d6efd;
-  opacity: 90%;
-}
- */
-
-/* .photobooth-container {
-  height: 100%;
-} */
-/* .blue-square {
-  max-height: 80vh;
-  aspect-ratio: 1;
-  background-color: blue;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
 .flex-container {
   margin-top: 20px;
 }
@@ -90,9 +64,9 @@ label.label input[type="file"] {
 }
 
 .header-logo {
-  width: 60%;
+  width: 40%;
 }
 
 .footer-logo {
-  width: 10%;
+  width: 5%;
 }
