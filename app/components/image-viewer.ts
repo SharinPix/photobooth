@@ -93,8 +93,8 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
       async (): Promise<void> => {
         if (!this.map) throw new Error('Map was not loaded yet.');
         const mapCanvas = document.createElement('canvas');
-        mapCanvas.width = 1080 as number;
-        mapCanvas.height = 1080 as number;
+        mapCanvas.width = 1080;
+        mapCanvas.height = 1080;
         const mapContext = mapCanvas.getContext('2d');
         const canvas = this.mapCanvas;
 
