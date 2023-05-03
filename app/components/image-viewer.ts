@@ -93,8 +93,8 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
       async (): Promise<void> => {
         if (!this.map) throw new Error('Map was not loaded yet.');
         const mapCanvas = document.createElement('canvas');
-        if (this.width) mapCanvas.width = (1080) as number;
-        if (this.height) mapCanvas.height = (1080) as number;
+        mapCanvas.width = 1080 as number;
+        mapCanvas.height = 1080 as number;
         const mapContext = mapCanvas.getContext('2d');
         const canvas = this.mapCanvas;
 
@@ -131,8 +131,8 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
         }
 
         if (!matrix) throw new Error('Could not export (matrix)');
-        const mapElem = this.elem?.querySelector('.map');
-        const transformMatrix = new DOMMatrix(matrix.map((i) => i));
+        // const mapElem = this.elem?.querySelector('.map');
+        // const transformMatrix = new DOMMatrix(matrix.map((i) => i));
         // mapContext?.setTransform(transformMatrix);
         mapContext?.drawImage(canvas, 0, 0, 1080, 1080); // to change
 
