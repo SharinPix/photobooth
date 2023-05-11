@@ -57,6 +57,7 @@ label.label input[type="file"] {
 
 .map {
   height: 100%;
+  padding: 12%;
 }
 
 .header-logo {

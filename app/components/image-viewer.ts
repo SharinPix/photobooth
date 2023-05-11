@@ -62,9 +62,9 @@ export default class ImageViewerComponent extends Component<ImageViewerArgs> {
           projection,
           center: Extent.getCenter(extent),
           extent,
-          zoom: 1,
+          zoom: 0,
           maxZoom: 10,
-          minZoom: 1,
+          minZoom: 0,
         });
 
         const imageStatic = new Source.ImageStatic({
